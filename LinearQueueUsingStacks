@@ -1,0 +1,26 @@
+class LinearQueueUsingStacks:
+    def __init__(this):
+        this.stack1 = []
+        this.stack2 = []
+
+    def enqueue(this, item):
+        while this.stack1:
+            this.stack2.append(this.stack1.pop())
+        this.stack1.append(item)
+        while this.stack2:
+            this.stack1.append(this.stack2.pop())
+
+    def dequeue(this):
+        if not this.is_empty():
+            return this.stack1.pop()
+        else:
+            return None
+
+    def is_empty(this):
+        return len(this.stack1) == 0
+
+linear_queue_using_stacks = LinearQueueUsingStacks()
+linear_queue_using_stacks.enqueue(5)
+linear_queue_using_stacks.enqueue(6)
+print(linear_queue_using_stacks.dequeue())
+print(linear_queue_using_stacks.dequeue())
