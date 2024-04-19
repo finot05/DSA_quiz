@@ -1,0 +1,33 @@
+class CircularQueue:
+    def __init__(self, capacity):
+        self.queue = [None] * capacity
+        self.front = 0
+        self.rear = 0
+        self.size = 0
+        self.capacity = capacity
+
+    def enqueue(self, item):
+        if self.size < self.capacity:
+            self.queue[self.rear] = item
+            self.rear = (self.rear + 1) % self.capacity
+            self.size += 1
+        else:
+            print("Queue is full")
+
+    def dequeue(self):
+        if not self.is_empty():
+            item = self.queue[self.front]
+            self.front = (self.front + 1) % self.capacity
+            self.size -= 1
+            return item
+        else:
+            print("Queue is empty")
+            return None
+
+    def is_empty(self):
+        return self.size == 0
+circular_queue = CircularQueue(5)
+circular_queue.enqueue(3)
+circular_queue.enqueue(4)
+print(circular_queue.dequeue())
+print(circular_queue.dequeue())
